@@ -1,38 +1,38 @@
-<!-- src/app/building-viewer/building-viewer.component.html -->
-<div class="toolbar">
-    <button mat-raised-button color="primary" 
-            (click)="enableLinkMode()" 
-            [disabled]="isLinkMode || isRemoveLinkMode" 
-            aria-label="Abilita modalità link">
-        Abilita Link
-    </button>
-    <button mat-raised-button color="warn" 
-            (click)="enableRemoveLinkMode()" 
-            [disabled]="isRemoveLinkMode || isLinkMode" 
-            aria-label="Abilita modalità rimuovi link">
-        Rimuovi Link
-    </button>
-    <button mat-raised-button color="warn" 
-            (click)="removeAllLinks()" 
-            [disabled]="isLinkMode || isRemoveLinkMode"
-            aria-label="Rimuovi tutti i link">
-        Rimuovi Tutti i Link
-    </button>
-    <button mat-raised-button color="accent" 
-            (click)="resetToBuilding()" 
-            [disabled]="currentObjectName === 'building'" 
-            aria-label="Torna all'edificio principale">
-        Torna All'Edificio
-    </button>
-    <button mat-raised-button 
-        [disabled]="navigationHistory.length <= 1"
-        (click)="goBack()">
-    Indietro
-</button>
-</div>
+<div class="viewer-container">
+    <div #rendererContainer class="renderer-container"></div>
 
-<div class="loader-overlay" *ngIf="isLoadingFloor">
-    <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
-</div>
+    <div class="controls-container">
+        <div class="button-group">
+            <button mat-raised-button color="primary" (click)="resetToBuilding()" [disabled]="isLoadingFloor">
+                <mat-icon>home</mat-icon>
+                Torna all'edificio
+            </button>
+            <button mat-raised-button color="primary" (click)="goBack()" [disabled]="navigationHistoryLength <= 1">
+                <mat-icon>arrow_back</mat-icon>
+                Indietro
+            </button>
+        </div>
+    
+        <div class="separator"></div>
+    
+        <div class="button-group">
+            <button mat-raised-button color="primary" (click)="enableLinkMode()" [disabled]="isLoadingFloor">
+                <mat-icon>add_link</mat-icon>
+                Aggiungi Link
+            </button>
+            <button mat-raised-button color="warn" (click)="enableRemoveLinkMode()" [disabled]="isLoadingFloor">
+                <mat-icon>link_off</mat-icon>
+                Rimuovi Link
+            </button>
+            <button mat-raised-button color="warn" (click)="removeAllLinks()" [disabled]="isLoadingFloor">
+                <mat-icon>clear_all</mat-icon>
+                Rimuovi Tutti
+            </button>
+        </div>
+    </div>
 
-<div #rendererContainer class="renderer-container"></div>
+    <div class="loading-overlay" *ngIf="isLoadingFloor">
+        <mat-spinner diameter="48"></mat-spinner>
+        <p>Caricamento in corso...</p>
+    </div>
+</div>

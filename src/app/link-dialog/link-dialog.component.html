@@ -1,0 +1,16 @@
+<!-- src/app/link-dialog/link-dialog.component.html -->
+<h1 mat-dialog-title>Seleziona l'oggetto da collegare</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Oggetto 3D</mat-label>
+    <mat-select [(value)]="selectedObject">
+      <mat-option *ngFor="let obj of availableObjects" [value]="obj">
+        {{ obj }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annulla</button>
+  <button mat-button [disabled]="!selectedObject" (click)="onConfirm()">Conferma</button>
+</div>

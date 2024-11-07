@@ -1,0 +1,37 @@
+﻿theeDtest
+|--.editorconfig
+|--.gitignore
+|--angular.json
+|--Export-ProjectTree.ps1
+|--package.json
+|--package-lock.json
+|--README.md
+|--tsconfig.app.json
+|--tsconfig.json
+|--tsconfig.spec.json
+|--assets
+|   +--models
+|       |--building.glb
+|       |--floor1.glb
+|       +--floor2.glb
++--src
+    |--index.html
+    |--main.ts
+    |--styles.css
+    +--app
+        |--app.component.css
+        |--app.component.html
+        |--app.component.spec.ts
+        |--app.component.ts
+        |--app.config.ts
+        |--app.routes.ts
+        |--building-viewer
+        |   |--building-viewer.component.css
+        |   |--building-viewer.component.html
+        |   |--building-viewer.component.spec.ts
+        |   +--building-viewer.component.ts
+        +--link-dialog
+            |--link-dialog.component.css
+            |--link-dialog.component.html
+            |--link-dialog.component.spec.ts
+            +--link-dialog.component.ts

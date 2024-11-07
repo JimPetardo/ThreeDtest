@@ -1,0 +1,38 @@
+<!-- src/app/building-viewer/building-viewer.component.html -->
+<div class="toolbar">
+    <button mat-raised-button color="primary" 
+            (click)="enableLinkMode()" 
+            [disabled]="isLinkMode || isRemoveLinkMode" 
+            aria-label="Abilita modalità link">
+        Abilita Link
+    </button>
+    <button mat-raised-button color="warn" 
+            (click)="enableRemoveLinkMode()" 
+            [disabled]="isRemoveLinkMode || isLinkMode" 
+            aria-label="Abilita modalità rimuovi link">
+        Rimuovi Link
+    </button>
+    <button mat-raised-button color="warn" 
+            (click)="removeAllLinks()" 
+            [disabled]="isLinkMode || isRemoveLinkMode"
+            aria-label="Rimuovi tutti i link">
+        Rimuovi Tutti i Link
+    </button>
+    <button mat-raised-button color="accent" 
+            (click)="resetToBuilding()" 
+            [disabled]="currentObjectName === 'building'" 
+            aria-label="Torna all'edificio principale">
+        Torna All'Edificio
+    </button>
+    <button mat-raised-button 
+        [disabled]="navigationHistory.length <= 1"
+        (click)="goBack()">
+    Indietro
+</button>
+</div>
+
+<div class="loader-overlay" *ngIf="isLoadingFloor">
+    <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+</div>
+
+<div #rendererContainer class="renderer-container"></div>
